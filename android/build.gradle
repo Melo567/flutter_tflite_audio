@@ -27,13 +27,17 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 31
+    if (project.android.hasProperty("namespace")) {
+        namespace = "flutter.tflite_audio"
+    }
+    compileSdkVersion 34
+    compileSdk 34
 
     defaultConfig {
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
-        targetSdkVersion 31
+        targetSdkVersion 34
         minSdkVersion 24
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         
